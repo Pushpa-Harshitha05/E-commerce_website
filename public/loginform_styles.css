@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: rgb(238, 245, 248);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.logo{
+  width: 43%;
+  height: 100%;
+}
+
+header {
+  background: linear-gradient(-90deg, rgb(121, 180, 216), rgb(173, 221, 240), rgb(121, 180, 216));
+  padding: 30px 0px;
+  text-align: center;
+  color: darkblue;
+  font-size: 1.8rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 100%;
+  padding: 5rem 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-shadow: 8px 10px 10px rgb(178, 178, 178);
+}
+
+.bubbles {
+  position: absolute;
+  right: 10%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(135, 206, 250, 0.7); /* Light blue color */
+  animation: rise 10s infinite ease-in-out alternate-reverse;
+  opacity: 0.6;
+}
+
+.bubble:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 80%; 
+  animation-duration: 10s;
+  animation: upward 10s infinite ease-in-out alternate-reverse;
+}
+
+.bubble:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  left: 65%;
+  animation-duration: 8s;
+  animation: rise 8s infinite ease-in-out alternate-reverse;
+}
+
+.bubble:nth-child(3) {
+  width: 90px;
+  height: 90px;
+  left: 100%;
+  animation: diagonal 10s infinite ease-in-out alternate-reverse;
+  animation-duration: 10s;
+}
+
+@keyframes rise {
+  0% {
+      transform: translate(40px,80vh);
+  }
+  100% {
+      transform: translate(0,100px);
+  }
+}
+
+@keyframes upward {
+  0% {
+      transform: translateY(80vh);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+@keyframes diagonal {
+  0% {
+      transform: translate(0,100px);
+  }
+  100% {
+      transform: translate(40px,80vh);
+  }
+}
+
+header a{
+  color: darkblue;
+}
+
+header p:nth-child(3){
+  text-align: center  ;
+  color: rgb(250, 249, 249);
+  font-size: 2.2rem;
+  font-weight:900;
+  width: 70%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+#emailname {
+  background-image: url('images/form_imgs/email_img.png');
+  background-repeat: no-repeat;
+  background-position: 10px center; 
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
+#passwor{
+  background-image: url('images/form_imgs/password_img.png'); 
+  background-repeat: no-repeat;
+  background-position: 10px center; 
+  background-size: 20px 20px;
+  padding-left: 40px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid lightgray;
+  margin-bottom: 15px;
+}
+
+#Home{
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+#Home:hover{
+  transform: scale(1.1);
+  color: white;
+}
+
+header p {
+  text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+}
+
+/* Main Content Area */
+.total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 59%;
+  height: 100%;
+}
+
+.container {
+  background:linear-gradient(-90deg, rgb(180, 222, 239), white, rgb(180, 222, 239));
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+  width: 400px;
+  text-align: center;
+}
+
+.container h1 {
+  color: darkblue;
+  margin-bottom: 25px;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: -5px;
+  font-size: 0.99rem;
+}
+
+.container input[type="email"],
+.container input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.container .passworddiv input[type="password"]{
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.container span{
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.container input[type="submit"] {
+  background-color: rgb(109, 175, 216);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.container input[type="submit"]:hover {
+  background-color: darkblue;
+}
+
+.container p {
+  margin-top: 12.5px;
+  font-size: 15px;
+}
+
+.container a {
+  color: darkblue;
+  text-decoration: underline;
+}
+
+.container a:hover {
+  color: mediumblue;
+}
+
+.passworddiv {
+  position: relative; 
+  /* display: flex; */
+  width: 100%; 
+}
+
+.passworddiv input[type="password"] {
+  width: 100%; 
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.passworddiv img {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px; 
+  height: 20px; 
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>SIGN-UP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sign_styles.css">
+</head>
+
+<body>
+    <div class="logo">
+        <header>
+            <div class="bubbles">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+            <p><u>Guru Mobile Accessories</u> &amp; <u>Electronics</u></p>
+            <p>Grab Latest mobile accessories and electronics at unbeatable prices.To continue, Sign up.</p>
+            <a href="Homepage.php" id="home">Go to Home</a>
+        </header>
+    </div>
+
+    <div class="total">
+        <div class="container">
+            <h1>SIGN UP</h1>
+            <form action="sign.php" method="post" id="form">
+                <label for="firname">Name:</label>
+                <input type="text" id="firname" name="firname" placeholder="Enter your first name" required
+                    autocomplete="on">
+                <span id="nameError"></span>
+
+                <label for="emai">E-mail:</label>
+                <input type="email" id="emai" name="email" placeholder="Enter your email" required autocomplete="on">
+                <p class="sharemail">We will never share your email with anyone.</p>
+                <span id="mailError"></span>
+
+                <label for="pass1" id="password">Password:</label>
+                <div class="passworddiv">
+                    <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required>
+                    <img src="images/form_imgs/view.png" alt="Show" id="showpass">
+                </div>
+                <span id="pass1Error"></span>
+
+                <label for="pass2">Confirm Password:</label>
+                <div class="passworddiv confirmdiv">
+                    <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" required>
+                    <img src="images/form_imgs/view.png" alt="Show" id="showconpass">
+                </div>
+                <span id="pass2Error"></span>
+
+                <div id="msg"></div>
+
+                <div class="checkboxdiv">
+                    <input type="checkbox" id="checkbox" name="checkbox" required>
+                    <p id="terms">I Agree to Terms and Conditions</p>
+                </div>
+
+                <input type="submit" value="Submit" id="submit">
+            </form>
+            <p>Already have an account? <a href="loginform.html">LOGIN</a></p>
+        </div>
+    </div>
+    <script src="sign_script.js"></script>
+</body>
+
+</html>

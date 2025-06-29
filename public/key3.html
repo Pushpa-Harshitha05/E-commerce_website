@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html ng-app="FingersEcommerce">
+	<head>
+		<base href="/">
+		<title ng-bind-template="{{page_title}}">FINGERS - A New Language of Technology | Digital Accessories</title>
+		<link rel="shortcut icon" href="assets/images/favicons/favicon-96x96.png" type="image/x-icon">
+		<link rel="icon" href="assets/images/favicons/favicon-96x96.png" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="google-site-verification" content="NPWCNkqd1XwD33ZWw2KN9v-pLXgwP8YKXGybVvxwP8k" />
+		<meta name="google-site-verification" content="7NMiTqFvf9_sgNgbL-1H8Te7Pt04NDYfI5LWeXqc_UQ" />
+		
+
+
+		<!-- <link rel="stylesheet" type="text/css" href="assets/css/sweetalert2.min.css?ver=16-05-2023"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"> -->
+
+		<!-- Use <link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.min.css?ver=16-05-2023">
+		<link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css?ver=16-05-2023">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/sweetalert2.min.css?ver=16-05-2023"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/swiper.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/swiper.min.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/jk-rating-stars.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css?ver=16-05-2023" />
+        <link rel="stylesheet" type="text/css" href="assets/css/rzslider.css?ver=16-05-2023" /> -->
+
+        <link rel="stylesheet" type="text/css" href="assets/css/compressed.css?ver=16-05-2023" />
+
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/nav.css?ver=16-05-2023" />
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css?ver=17-02-2022-eve" />
+		<link rel="stylesheet" type="text/css" href="assets/css/responsive.css?ver=16-05-2023" /> -->
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+
+
+		<!-- Use -->
+		<!-- <script type="text/javascript" src="assets/js/jquery.js?ver=16-05-2023"></script>
+		<script type="text/javascript" src="assets/js/angular.min.js?ver=16-05-2023"></script> -->
+		<!-- <script type="text/javascript" src="https://code.angularjs.org/1.6.9/angular.min.js"></script> -->
+
+		<!-- Use -->
+		<!-- <script type="text/javascript" src="assets/js/jquery-validate.min.js?ver=16-05-2023"></script>
+		<script type="text/javascript" src="assets/js/angular-validate.min.js?ver=16-05-2023"></script>
+		<script type="text/javascript" src="assets/js/angular-route.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-idle.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-base64.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/ngStorage.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-sanitize.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/ng-file-upload.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/checklist-model.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/ui-bootstrap.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/lax.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/spritespin.js?ver=16-05-2023"></script>
+		<script type="text/javascript" src="assets/js/scripts.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-google-analytics.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/swiper.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-swiper.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/sweetalert2.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-sweetalert2.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/jk-rating-stars.min.js"></script>		
+		<script type="text/javascript" src="assets/js/rzslider.js?ver=16-05-2023"></script> -->
+
+		<!-- Angular Material requires Angular.js Libraries -->
+		<!-- Use -->
+		<!-- <script type="text/javascript" src="assets/js/angular-animate.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-aria.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-messages.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angularjs-social-login.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-sticky.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/angular-nicescroll.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/jquery.nicescroll.min.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" src="assets/js/jquery.easing.min.js?ver=16-05-2023"></script>		
+	    <script type="text/javascript" src="assets/js/jquery.mousewheel.js?ver=16-05-2023"></script> -->
+
+	    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script> -->
+
+	    <!-- Use -->
+	    <!-- <script type="text/javascript" src="assets/js/jquery.fancybox.min.js?ver=16-05-2023"></script>
+	    <script type="text/javascript" src="assets/js/jquery.ez-plus.js?ver=16-05-2023"></script>
+	    <script type="text/javascript" src="assets/js/angular-material.min.js?ver=16-05-2023"></script>	    
+	    <script type="text/javascript" src="assets/js/angular-ui-swiper.min.js?ver=16-05-2023"></script>	    
+	    <script type="text/javascript" src="assets/js/moment.min.js?ver=16-05-2023"></script>	    
+	    <script type="text/javascript" src="assets/js/angular-cookies.js?ver=16-05-2023"></script>  -->
+
+	    <!-- <script type="text/javascript" src="assets/js/compressed.js?ver=16-05-2023"></script> -->
+
+	    
+		<!-- <script type="text/javascript" src="assets/js/jqcloud/jqcloud-1.0.4.js"></script> -->
+		<!-- <link rel="stylesheet" type="text/css" href="assets/js/jqcloud/jqcloud.css" /> -->
+		<meta name="facebook-domain-verification" content="mi45fyjveo1irw18jngm2oura4a231" />
+		<!-- <meta property="og:title" content="FINGERS - A New Language of Technology | Digital Accessories">
+		<meta property="og:type" content="website">
+		<meta property="og:description" content="Discover FINGERS - India's most innovative digital accessories Brand. Explore world-class Earphones, Headsets, Speakers, Power Banks, Mobile & PC Accessories & more."> -->
+		<!-- <meta name="description" content="{{page_description}}"> -->
+		<meta name="description" content="Discover FINGERS - India's most innovative digital accessories Brand. Explore world-class Earphones, Headsets, Speakers, Power Banks, Mobile & PC Accessories & more.">
+		<!-- <meta property="og:image" content="https://www.fingersstore.com/assets/images/fingers_meta.jpg">
+		<meta property="og:updated_time" content="1629969058" />
+		<meta property="og:url" content="https://www.fingersstore.com" /> -->
+
+		<meta property="fb:app_id" content="589296119082604" />
+
+		<!-- <link rel="canonical" href="{{canonical}}" ng-if="canonical != ''"> -->
+		<!-- <script type="text/javascript" src="assets/js/validation.js?ver=16-05-2023"></script> -->
+		
+		<richcard></richcard>
+		
+		<script type="text/javascript">
+			(function(c,l,a,r,i,t,y){
+				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+			})(window, document, "clarity", "script", "f1q9sj21y2");
+		</script>
+
+		<style type="text/css">
+			.web_site_min_height{
+				overflow-x: hidden;
+			}
+			.fullpageloader{
+				position: fixed;
+				top:  0;
+				left:  0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999999;
+				background-color: #ffffff;
+				transition: opacity ease 0.4s;
+				-moz-transition: opacity ease 0.4s;
+				-webkit-transition: opacity ease 0.4s;
+				-ms-transition: opacity ease 0.4s;
+				-o-transition: opacity ease 0.4s;
+			}
+			.fullpageloader h1{
+				position: absolute;
+				top:  50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				font-size: 5rem;
+				font-weight: 'rubikbold';
+			}
+			.fullpageloader.hiddenloader{
+				opacity: 0;
+				visibility: hidden;
+			}
+			@media only screen and (max-width:992px) {
+				.search_input_searchbar{
+					padding: 18px 20px;
+				}
+			}
+			@media only screen and (max-width:768px) {
+				.fullpageloader h1{
+					font-size: 3rem;
+				}
+			}
+			@media only screen and (max-width:640px) {
+				.search_input_searchbar{
+					padding: 28px 20px;
+				}
+			}
+		</style>	
+
+
+		<script>
+		  var enhanced_conversion_data = {
+		    "email": '',  
+		  };
+		</script>
+
+		<!-- Global site tag (gtag.js) - Google Ads: AW-746962687 -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=AW-746962687"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config','AW-746962687', {'allow_enhanced_conversions':true});
+		</script>
+
+
+		
+	</head>
+	<!-- <body ng-controller="MainController" ng-class="{'active_nav': (is_open_nav || is_cart_list_popup || $storage.enableHomePopup || is_applied || is_cancle_order || is_notified_popup)}"> -->
+
+	<!-- ng-mouseleave="showExitPopup();" -->
+
+	<body ng-controller="MainController" ng-class="{'active_nav': (is_open_nav || is_applied || is_cancle_order)}">
+		<!-- Google Tag Manager (noscript) -->
+
+		<div class="fullpageloader">
+			<h1>#FINGERSAddict</h1>
+		</div>
+
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRKQ45V"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<!-- <div ng-if="activePath != '/login/' && activePath != '/forgot-password/' && activePath != '/sign-up/' && activePath.indexOf('reset') == -1" ng-include="'templates/include/header.html'"></div> -->
+
+		<div ng-include="'templates/include/header.html?ver=16-05-2023'"></div>
+		<div class="web_site_min_height">
+			<ng-view class="fadeView"></ng-view>
+		</div>
+		<div ng-include="'templates/include/footer.html?ver=16-05-2023'"></div>
+		<!-- <div ng-if="activePath != '/login/' && activePath != '/forgot-password/' && activePath != '/sign-up/' && activePath.indexOf('reset') == -1" ng-include="'templates/include/footer.html'"></div> -->
+		<div ng-include="'templates/include/cart_sidebar.html?ver=16-05-2023'"></div>
+		<span class="backtotopBtn" ng-class="{'active' : visibleScrollTop}" ng-click="scrollToTop()">
+			<i class="fa fa-long-arrow-up"></i>
+		</span>
+
+		<div class="compareObj"  ng-if="$storage.compareObj.length > 0 && activePath.indexOf('compare') < 0">
+
+			<div class="compareObjRelative">
+				<div class="fullBox">
+					<ul >
+						<li ng-repeat="(variation_ID, product) in $storage.compareObj.items">
+							<div class="compareBoxRelative">
+								<div class="comparePreview imageAspect" ng-click="navigatetocompare()">
+									<img src="{{product.images[0].image}}&w=150" />
+								</div>
+								<p ng-click="navigatetocompare()">
+									{{product.full_name}}
+								</p>
+								<a href="javascript:void(0)" ng-click="removeIndCompare($index)" class="removeCompareProduct"> <i class="fa fa-times"></i> </a>
+							</div>
+						</li>
+					</ul>
+					<a ng-if="$storage.compareObj.length > 1" class="clearallBtn" ng-click="removeCompare()" href="javascipt:void(0)">REMOVE ALL</a>
+				</div>
+				<div class="bottomWrap">
+					<p class="compareBtn" ng-click="navigatetocompare()" >
+						<span>COMPARE</span> <span class="numbers">{{$storage.compareObj.length}}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<style type="text/css">
+			.comparePreview.imageAspect{
+				aspect-ratio: 1;
+				margin-bottom: 10px;
+			}
+			.clearallBtn{
+				color: #000000;
+				padding: 3px 5px;
+				text-align: center;
+				position: absolute;
+				right: 15px;
+				bottom : -30px;
+				/* transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				-o-transform: translateX(-50%); */
+			}
+			.compareObj{
+				position: fixed;
+				z-index: 9999997;
+				/* background-color: rgba(0, 0, 0, 0.4); */
+				background-color: #ffffff;
+				box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+				bottom: 15px;
+				left: 15px;
+				color: #000000;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			.removeCompareProduct{
+				position: absolute;
+				top: 0;
+				color: #000000;
+				right: 0;
+				cursor: pointer;
+			}
+			.compareBoxRelative{
+				position: relative;
+				height: 100%;
+				width: 100%;
+			}
+			.compareObjRelative{
+				position: relative;
+				height: 100%;
+				width: 100%;
+			}
+			.compareObj .fullBox{
+				max-height: 0;
+				max-width: 0;
+				transform: scale(0);
+				transform-origin: bottom left;
+				/* overflow: hidden; */
+				visibility: hidden;
+				transition: all ease 0.6s;
+				-moz-transition: all ease 0.6s;
+				-webkit-transition: all ease 0.6s;
+				-ms-transition: all ease 0.6s;
+				-o-transition: all ease 0.6s;
+				position: relative;
+				z-index: 2;
+			}
+			.compareObj:hover .fullBox{
+				max-height: 400px;
+				max-width: 1920px;
+				transform: scale(1);
+				visibility: visible;
+			}
+			.compareObj .fullBox ul{
+				padding: 10px 15px;
+				padding-bottom: 15px;
+				list-style: none;
+				text-align: center;
+				display: flex;
+			}
+			/* .compareObj:hover .fullBox.inactive{
+				max-height: 0;
+				max-width: 0;
+			} */
+			.compareObj .fullBox ul li{
+				/* width: calc(100% / 3); */
+				flex-basis: 100%;
+			}
+			.compareObj .fullBox ul li p{
+				font-size: 14px;
+			}
+			.compareObj .compareBtn{
+				background-color: #a5556a;
+				padding: 5px 10px;
+				width: fit-content;
+				position: relative;
+				z-index: 4;
+				color: #ffffff;
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+				justify-content: center;
+			}
+			.compareBtn .numbers{
+				display: grid;
+				place-items: center;
+				background-color: #763D4B;
+				padding: 5px;
+				height: 32px;
+				width: 32px;
+			}
+		</style>
+
+		<!-- Chatra {literal} -->
+		<script>
+		    (function(d, w, c) {
+		        w.ChatraID = 'EhciWZnFjT97xiR6N';
+		        var s = d.createElement('script');
+		        w[c] = w[c] || function() {
+		            (w[c].q = w[c].q || []).push(arguments);
+		        };
+		        s.async = true;
+		        s.src = 'https://call.chatra.io/chatra.js';
+		        if (d.head) d.head.appendChild(s);
+		    })(document, window, 'Chatra');
+
+			// var count = 200;
+			// var defaults = {
+			// 	origin: { y: 0.7 }
+			// };
+
+
+			// function fire(particleRatio, opts) {
+
+			// 	confetti(Object.assign({}, defaults, opts, {
+			// 		particleCount: Math.floor(count * particleRatio)
+			// 	}));
+			// }
+
+		</script>
+		<!-- /Chatra {/literal} -->
+
+		<style type="text/css">
+			#chatra.chatra--side-bottom{
+				bottom:  50px!important;
+			}
+		</style>
+
+
+
+		<!-- Compressed -->
+		<script type="text/javascript"  src="assets/js/application.min.js"></script>
+		<script type="text/javascript"  src="assets/js/angularjs-social-login.js?ver=16-05-2023"></script>		
+		<script type="text/javascript" defer src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+		<!-- <script type="text/javascript"  src="https://ik.imagekit.io/fingerscdn3/js/app.js"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script> -->
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7HlgldL9ietWQF8Y3oHxf_LJnYPMHhDU&libraries=places"></script>
+		<script type="text/javascript" src="assets/js/addressGoogle.js?ver=16-05-2023"></script>
+		<script type="text/javascript" src="assets/js/ng-map.js?ver=16-05-2023"></script>
+
+		<script type="text/javascript"  src="app.js?ver=16-05-2023"></script>
+
+
+
+
+		<link rel="preload" href="assets/prefetch/banner_placeholder.jpg" as="image">
+		<link rel="preload" href="assets/prefetch/banner_placeholder_mobile.jpg" as="image">
+
+		<link rel="preload" href="assets/prefetch/12.webp" as="image">
+		<link rel="preload" href="assets/prefetch/13.webp" as="image">
+		<!-- <link rel="preload" href="https://ik.imagekit.io/fingerscdn3/prefetch/14.webp" as="image"> -->
+
+		
+
+		<div class="exitPopupContainer" ng-class="{'active' : exitPopup}">
+			<div class="exitPopupOverlay" ng-click="closeExitPopup()"></div>
+			<div class="exitPopup">
+				<div class="exitPopupRelative">
+					<a href="javascript:void(0)" ng-click="closeExitPopup()" class="exitCloseBtn"> 
+						<img src="assets/images/exitpopup/close.svg">
+					</a>
+					<div class="exitPopupContent">
+						<!-- <h2 class="text-uppercase">Get 10% Off</h2>
+						<p>Subscribe now and avail this special <br /> offer for your first order.</p>
+						<br /> -->
+						<div class="text-center">
+							<h2 class="text-uppercase">WIN INR <small><i class="fa fa-inr"></i></small>500</h2>
+							<p>Join #FINGERSAddicts community to win INR 500 gift card (on minimum purchase INR 2000), stay updated with what's happening in FINGERS World, exclusive offers and much more!</p>
+						</div>
+						<br />
+						<br />						
+						<div class="exitForm">
+							<form ng-submit="SubscriberFormSubmit(subscriberform)" class="form" name="subscriberform" id="subscriberform" ng-validate="subscriberformValidate">
+								<div class="form-group">
+									<div class="input_field">
+										<!-- <p>
+											<label id="email-error" class="error" style="margin-top: 10px; font-size: 12px; color: #fff;" for="email" style="color: #272928!important" ng-if="subscrib_message">{{subscrib_message}}</label>
+										</p> -->
+										<div class="formLeft">
+											<input type="email" ng-model="subscriberObj.email" name="email" placeholder="email address" required>
+										</div>
+										<div class="formRight">
+											<button type="submit" class="text-uppercase" name="submit" ng-class="{'disabled' : is_subscriber}">
+												<span ng-if="!is_subscriber">Subscribe Me</span>
+												<span ng-if="is_subscriber">Please wait</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<style type="text/css">
+			.exitPopupContent h2{
+				font-family: 'rubiklight';
+				color: #fff;
+				font-size: 2em;
+				margin-bottom: 3%;
+			}
+			.exitPopupContent small{
+				color: #fff;
+			}
+			.exitCloseBtn{
+				position: absolute;
+				right:  22px;
+				top:  22px;
+			}
+			.exitCloseBtn img{
+				max-width: 22px;
+				width: 100%;
+			}
+			.exitPopupContent p{
+				font-family: 'rubiklight';
+				/*color: #5C2A35;*/
+				color: #fff;
+				font-size: 0.9em;
+    			line-height: 1.6;
+			}
+			.exitPopupContent{
+				padding: 60px 15px;
+			}
+			/*.exitForm{
+				width: 45%;
+			}*/
+			.exitForm .input_field input{
+				background:  transparent;
+				border:  none;
+				border-bottom: solid 1px #fff;
+				color: #000000;
+				background-color: #dadada;
+				padding: 7px 0;
+				-moz-box-shadow: inset 0 0 1px rgba(68,68,68,0.6);
+				-webkit-box-shadow: inset 0 0 1px rgba(68,68,68,0.6);
+				box-shadow: inset 0 0 1px rgba(68,68,68,0.6);
+				/*margin-top: 30px;*/
+				width: 100%;
+				padding: 10px 15px;
+				border-radius: 20px;
+			}
+			.exitForm .formLeft{
+				max-width: 65%;
+				width: 100%;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.exitForm .formRight{
+				max-width: 30%;
+				width: 100%;
+				display: inline-block;
+				vertical-align: top;
+				text-align: right;
+			}
+			.exitForm .input_field button{
+				background-color: #d9194f;
+				padding:  10px 15px;
+				color: #fff;
+				border-radius: 20px;
+				border:  none;
+				/*margin-top:  15px;*/
+				font-size: 16px;
+    			font-family: 'rubiklight';
+			}
+
+			.exitForm .input_field button.disabled{
+				cursor: progress;
+				opacity: 0.8;
+			}
+			.exitForm .input_field input::placeholder{
+			     /*color: rgba(255, 255, 255, 0.7);*/
+			     color: #745e5f;
+			}
+
+			.exitPopupContainer{
+				position: fixed;
+				top:  0;
+				left:  0;
+				height: 100%;
+				width: 100%;
+				z-index: 9999999;
+				opacity: 0;
+				visibility: hidden;
+				transition:  opacity ease 0.4s;
+				-moz-transition:  opacity ease 0.4s;
+				-webkit-transition:  opacity ease 0.4s;
+				-ms-transition:  opacity ease 0.4s;
+				-o-transition:  opacity ease 0.4s;
+			}
+			.exitPopupContainer.active{
+				opacity: 1;
+				visibility: visible;
+			}
+			.exitPopupOverlay{
+				position: fixed;
+				top:  0;
+				left:  0;
+				z-index: 98;
+				height: 100%;
+				width: 100%;
+				background-color: rgba(0, 0, 0, 0.4);
+			}
+			.exitPopup{
+				position: fixed;
+				top:  50%;
+				left: 50%;
+				border-radius: 8px;
+				min-height: 320px;
+				max-width: 620px;
+				width:  100%;
+				transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				background-color: #fff;
+				background-image: url('assets/images/exitpopup/background.jpg');
+				background-position: right bottom;
+				background-repeat: no-repeat;
+				background-size: cover;
+				z-index: 99;
+				-webkit-box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.57);
+				-moz-box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.57);
+				box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.57);
+			}
+
+			.exitPopupRelative{
+				position: relative;
+				height: 320px;
+				width: 100%;
+			}
+
+			.exitForm{
+				position: absolute;
+				left: 15px;
+				bottom:  15px;
+				width: calc(100% - 30px);
+			}
+
+			@media only screen and (max-width:768px) {
+				.exitPopup{
+					background-image: url('assets/images/exitpopup/background_mobile.jpg');
+					background-position: center bottom;
+					min-height: 70vh;
+					max-width: calc(100% - 30px);
+				}
+				.exitPopupRelative{
+					height: 70vh;
+				}
+				.exitPopupContent{
+					padding: 50px 15px;
+				}
+				.exitForm{
+					width:  100%;
+				}
+				.exitForm .input_field input{
+					width:  100%;
+					margin-top:  10px;
+				}
+				.exitForm .formLeft, .exitForm .formRight{
+					max-width: calc(100% - 30px);
+				}
+				.exitForm .formRight{
+					margin-top:  10px;
+					text-align: center;
+				}
+				.exitPopupContent{
+					padding-top:  70px;
+					margin-top:  15px;
+				}
+				.exitPopupContent br{
+					display: none;
+				}
+			}
+
+		</style>	
+
+		<script src="https://checkout.razorpay.com/v1/checkout.js" defer="defer" async></script>
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s)
+		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)}(window, document,'script',
+		'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '345007007070544');
+		fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=345007007070544&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- End Facebook Pixel Code -->
+		<!-- Global site tag (gtag.js) - Google Ads: 746962687 -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=AW-746962687"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'AW-746962687');
+		</script>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PRKQ45V');</script>
+		<!-- End Google Tag Manager -->
+		<style type="text/css">
+			body {
+				overflow-x: unset !important;
+			}
+		</style>		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-51VZ6N5E23"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'G-51VZ6N5E23');
+		</script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				setTimeout(function(){
+					$(".fullpageloader").addClass("hiddenloader");
+				}, 500);
+			})
+		</script>
+
+				<!-- RichCard -->
+
+		<script type="text/javascript">
+			navigator.geolocation.getCurrentPosition(function(position) {
+				mysrclat = position.coords.latitude;
+				mysrclong = position.coords.longitude;
+			});
+		</script>
+
+
+	</body>
+</html>

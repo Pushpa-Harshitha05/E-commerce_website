@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: rgb(240, 245, 248);
+  color: #333;
+}
+
+header {
+  background: linear-gradient(-90deg, skyblue, white, skyblue);
+  padding: 14px 20px;
+  color: darkblue;
+  width: 98.9vw;
+  height: 100.5px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  position: relative; 
+  box-sizing: border-box;
+}
+
+header .logo {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 2.07rem;
+  text-decoration: underline;
+  text-align: center;
+  width: 100%;
+}
+
+header .profile,
+header .userbtns {
+  margin-left: auto; 
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 40px;
+  margin-top: 6.5px;
+}
+
+header .userbtns {
+  gap: 8px;
+}
+
+header .profile{
+  gap: 25px;
+}
+
+.cartlink{
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: darkblue;
+  font-size: 1.02rem;
+}
+
+.cartlink:hover{
+  background-color: transparent;
+  transform: scale(1.05);
+}
+
+#cart{
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+#profileimg {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  opacity: 0.82;
+  margin-right: 8px; 
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+header .userbtns a {
+  background-color: darkblue;
+  text-decoration: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+header p {
+  margin: 0; 
+}
+
+.cartitems{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+nav {
+  background-color: rgb(92, 167, 213);
+  padding: 10px 0;
+  text-align: center;
+  width: 100vw;
+  margin-top: 5px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: white;
+  color: darkblue;
+  border-radius: 5px;
+}
+
+mark{
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+header{
+  position: fixed;
+  z-index: 5;
+}
+
+.start{
+  position: fixed;
+  z-index: 1;
+}
+
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 230px;
+  z-index: 10;
+}
+
+.dropdown-menu a:first-child{
+  font-size: 1.3rem;
+  padding: 15px 20px;
+  padding-left: 13px;
+  color: black;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 1.05rem;
+  color: #4f4f4f;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.editDetails{
+  width: 90vw;
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.edit{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.edit .display p{
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.edit input{
+  width: 300px;
+  height: 34px;
+  font-size: 0.9rem;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding-left: 7px;
+}
+
+.edit .button{
+  width: 80px;
+  padding: 5px 0px;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-top: 23px;
+  cursor: pointer;
+  transition: background-color 0.6s;
+}
+
+.edit .button:hover{
+  background-color: rgb(225, 225, 225);
+}
+
+footer {
+  background: linear-gradient(-90deg, skyblue, white, skyblue); 
+  color: #333;
+  padding: 40px 0;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 2px;
+  height: fit-content;
+}
+
+.footer-content {
+  padding: 0px 180px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  height: fit-content;
+  margin-bottom: 20px;
+}
+
+.footer-column {
+  width: 300px;
+  margin: 10px;
+  padding: 15px;
+  text-align: left;
+}
+
+footer .details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  width: 350px;
+  margin: 8px;
+  padding: 0px;
+  gap: 20px;
+}
+
+footer .details p{
+  font-size: 1.2rem;
+}
+
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #0077b6; 
+}
+
+.footer-column p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #444;
+}
+
+.footer-column a,.footer-column .number {
+  color: #0271ad; 
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #005f73; 
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: rgb(92, 167, 213); 
+  padding: 10px 0;
+  font-size: 1rem;
+  color: white;
+}
+
+.footer-bottom p {
+  margin: 0;
+}

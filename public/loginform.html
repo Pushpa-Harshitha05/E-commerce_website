@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="loginform_styles.css">
+</head>
+
+<body>
+    <div class="logo">
+        <header>
+            <div class="bubbles">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
+            <p><u>Guru Mobile Accessories</u> &amp; <u>Electronics</u></p>
+            <p>Grab Latest mobile accessories and electronics at unbeatable prices.To continue, Sign up.</p>
+            <a href="Homepage.php" id="Home">Go to Home</a>
+        </header>
+    </div>
+
+    <div class="total">
+        <div class="container">
+            <h1>LOGIN</h1>
+            <form action="loginform.php" method="post">
+                <label for="emailname">E-MAIL:</label><br>
+                <input type="email" id="emailname" name="email" placeholder="Enter your email" required
+                    autocomplete="on"><br>
+
+                <label for="passwor">PASSWORD:</label><br>
+                <div class="passworddiv">
+                    <input type="password" id="passwor" name="password" placeholder="Enter your password" required
+                        autocomplete="on">
+                    <img src="images/form_imgs/view.png" alt="Show" id="showconpass">
+                </div>
+
+                <input type="submit" id="submit" name="submit" value="Submit"><br>
+                <p>Don't have an account? <a href="sign.html">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="loginform_script.js"></script>
+</body>
+
+</html>
