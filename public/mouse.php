@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
+ob_start(); // Start output buffering
+session_start();
 
 $server = "shuttle.proxy.rlwy.net";
 $username = "root";
@@ -11,81 +10,71 @@ $port = 32509;
 
 // Connect to the database
 $con = mysqli_connect($server, $username, $password, $db_name, $port);
-session_start();
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 if (!$user_id) {
-
-} else {
-  $select_user = mysqli_query($con, "SELECT * FROM `details` WHERE id='$user_id'");
-
-  if (!$select_user) {
-    die("query failed");
-  }
-
-  if (mysqli_num_rows($select_user) > 0) {
-    $fetch_user = mysqli_fetch_assoc($select_user);
-  } else {
     $fetch_user = null;
-  }
+} else {
+    $select_user = mysqli_query($con, "SELECT * FROM `details` WHERE id='$user_id'");
+    if (!$select_user) {
+        die("query failed");
+    }
+    if (mysqli_num_rows($select_user) > 0) {
+        $fetch_user = mysqli_fetch_assoc($select_user);
+    } else {
+        $fetch_user = null;
+    }
 }
 
 $usercart = 0;
 
 if (isset($_POST['addtocartbtn'])) {
+    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-  $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
-  if ($user_id) {
-
-    if (!$fetch_user) {
-      header("Location:sign.html");
-    }
-
-    $product_name = $_POST['product_name'];
-    $product_image = $_POST['product_image'];
-    $product_desc = $_POST['product_desc'];
-    $product_price = $_POST['product_price'];
-
-    $select_cart = mysqli_query($con, "SELECT * FROM `cart` WHERE name = '$product_name' and user_id = '$user_id'") or die('query failed');
-
-    if (mysqli_num_rows($select_cart) > 0) {
-    } else {
-      if ($user_id) {
-
-        $product_desc_esc = mysqli_real_escape_string($con, $product_desc);
-
-        mysqli_query($con, "INSERT INTO `cart`(user_id,name,price,image,description) VALUES ('$user_id','$product_name','$product_price','$product_image','$product_desc_esc')") or die('query failed');
-
-        $res = mysqli_query($con, "SELECT user_cart,cost FROM `details` WHERE id = '$user_id'");
-        if ($row = mysqli_fetch_assoc($res)) {
-          $usercart = $row['user_cart'];
-          $cost = $row['cost'];
-          $number = preg_replace('/[^0-9.]/', '', $product_price);
-          $number = (float) $number;
-
-          $usercart += 1;
-          $cost += $number;
-
-          mysqli_query($con, "UPDATE `details` SET user_cart = '$usercart', cost = '$cost' WHERE id = '$user_id'");
-
+    if ($user_id) {
+        if (!$fetch_user) {
+            header("Location:sign.html");
+            exit();
         }
-        header("Location: " . $_SERVER['PHP_SELF']);
+
+        $product_name = $_POST['product_name'];
+        $product_image = $_POST['product_image'];
+        $product_desc = $_POST['product_desc'];
+        $product_price = $_POST['product_price'];
+
+        $select_cart = mysqli_query($con, "SELECT * FROM `cart` WHERE name = '$product_name' and user_id = '$user_id'") or die('query failed');
+
+        if (mysqli_num_rows($select_cart) == 0) {
+            $product_desc_esc = mysqli_real_escape_string($con, $product_desc);
+
+            mysqli_query($con, "INSERT INTO `cart`(user_id,name,price,image,description) VALUES ('$user_id','$product_name','$product_price','$product_image','$product_desc_esc')") or die('query failed');
+
+            $res = mysqli_query($con, "SELECT user_cart,cost FROM `details` WHERE id = '$user_id'");
+            if ($row = mysqli_fetch_assoc($res)) {
+                $usercart = $row['user_cart'];
+                $cost = $row['cost'];
+                $number = preg_replace('/[^0-9.]/', '', $product_price);
+                $number = (float)$number;
+
+                $usercart += 1;
+                $cost += $number;
+
+                mysqli_query($con, "UPDATE `details` SET user_cart = '$usercart', cost = '$cost' WHERE id = '$user_id'");
+            }
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
+        }
+    } else {
+        $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+        header("Location:loginform.html");
         exit();
-
-      } else {
-        header("Location:about.html");
-      }
     }
-  } else {
-    $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
-    header("Location:loginform.html");
-  }
-
 }
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>MOUSE ELECTRONIC APPLIANCES</title>
@@ -98,7 +87,7 @@ if (isset($_POST['addtocartbtn'])) {
 </head>
 
 <body>
-  <header><BR>
+  <header><br>
     <div class="logo">
       <p><u>Guru Mobile Accessories</u> &amp; <u> Electronics</u></p>
     </div>
@@ -137,8 +126,8 @@ if (isset($_POST['addtocartbtn'])) {
         <a href="loginform.html">Login</a>
       </div>
     <?php endif; ?>
-
   </header><br><br><br><br><br><br>
+
   <div class="start">
     <nav>
       <a href="Homepage.php" target="_parent">Home</a>
@@ -147,50 +136,44 @@ if (isset($_POST['addtocartbtn'])) {
       <a href="#footer" target="_self">Contact us</a>
     </nav>
   </div>
+
   <section>
     <h1>Mouse Appliances</h1>
   </section>
 
   <?php
-
   $pcount = 1;
   $select_product = mysqli_query($con, 'SELECT * FROM `products` WHERE product_type = "mouse"') or die('query failed');
 
   if (mysqli_num_rows($select_product) > 0) {
     while ($fetch_product = mysqli_fetch_assoc($select_product)) {
-
       if (($pcount == 1) || ($pcount == 4)) {
-        $classcontainer = 'product-container';
-        echo "<main class='$classcontainer'>";
-      } else if ($pcount == 7) {
-        $classcontainer = 'product-container';
-        $idcontainer = 'hide';
+        echo "<main class='product-container'>";
+      } elseif ($pcount == 7) {
         echo '<button type="button" id="loadbtn">Load More</button>';
-        echo "<main class='$classcontainer' id='$idcontainer'>";
+        echo "<main class='product-container' id='hide'>";
       }
-      ?>
+  ?>
 
-      <form action="" method="post" class="product">
-        <img src="<?php echo $fetch_product['product_image'] ?>" alt="<?php echo $fetch_product['name']; ?>">
-        <h3><?php echo $fetch_product['name']; ?></h3>
-        <p><?php echo $fetch_product['description']; ?></p>
-        <p>
-          <b><?php echo $fetch_product['price']; ?></b> <s><?php echo $fetch_product['strike']; ?></s>
-          <?php echo $fetch_product['para']; ?>
-        </p>
-        <input type="hidden" name="product_image" value="<?php echo $fetch_product['product_image'] ?>">
-        <input type="hidden" name="product_name" value="<?php echo $fetch_product['name']; ?>">
-        <input type="hidden" name="product_price" value="<?php echo $fetch_product['price']; ?>">
-        <input type="hidden" name="product_desc" value="<?php echo $fetch_product['description']; ?>">
-        <div class="checkoutbtns">
-          <button class="btnsubmit buynow" name="buynowbtn">Buy Now</button>
-          <button class="btnsubmit addtocart" name="addtocartbtn">Add To Cart</button>
-        </div>
-      </form>
+  <form action="" method="post" class="product">
+    <img src="<?php echo $fetch_product['product_image'] ?>" alt="<?php echo $fetch_product['name']; ?>">
+    <h3><?php echo $fetch_product['name']; ?></h3>
+    <p><?php echo $fetch_product['description']; ?></p>
+    <p>
+      <b><?php echo $fetch_product['price']; ?></b> <s><?php echo $fetch_product['strike']; ?></s>
+      <?php echo $fetch_product['para']; ?>
+    </p>
+    <input type="hidden" name="product_image" value="<?php echo $fetch_product['product_image'] ?>">
+    <input type="hidden" name="product_name" value="<?php echo $fetch_product['name']; ?>">
+    <input type="hidden" name="product_price" value="<?php echo $fetch_product['price']; ?>">
+    <input type="hidden" name="product_desc" value="<?php echo $fetch_product['description']; ?>">
+    <div class="checkoutbtns">
+      <button class="btnsubmit buynow" name="buynowbtn">Buy Now</button>
+      <button class="btnsubmit addtocart" name="addtocartbtn">Add To Cart</button>
+    </div>
+  </form>
 
-
-
-      <?php
+  <?php
       if (($pcount % 3) == 0) {
         echo "</main>";
       }
@@ -211,18 +194,19 @@ if (isset($_POST['addtocartbtn'])) {
       </div>
       <div class="footer-column details">
         <p>Email: <a href="mailto:pharshitha2005@gmail.com">pharshitha2005@gmail.com</a></p>
-        <p>Phone:
-          <span class="number">+91 9182355044</span>
-        </p>
-        <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530
-            034</span></p>
+        <p>Phone: <span class="number">+91 9182355044</span></p>
+        <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530034</span></p>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 Guru Mobile Accessories & Electronics. All Rights Reserved.</p>
     </div>
   </footer>
+
   <script src="loadmore_script.js"></script>
 </body>
-
 </html>
+
+<?php
+ob_end_flush(); // End output buffering and flush output
+?>

@@ -1,6 +1,8 @@
-<?php
-$insert = false;
+<?
+ob_start();
 session_start();
+
+$insert = false;
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $server = "shuttle.proxy.rlwy.net";

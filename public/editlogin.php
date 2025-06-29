@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php
+ob_start(); // Ensures header() works later without error
+session_start();
 
 $server = "shuttle.proxy.rlwy.net";
 $username = "root";
@@ -11,22 +13,19 @@ $port = 32509;
 
 // Connect to the database
 $con = mysqli_connect($server, $username, $password, $db_name, $port);
-session_start();
-
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
-
-if ($user_id != null) {
-
-  $select_user = mysqli_query($con, "SELECT * FROM `details` WHERE id='$user_id'");
-
-  if (mysqli_num_rows($select_user) > 0) {
-    $fetch_user = mysqli_fetch_assoc($select_user);
-  } else {
-    $fetch_user = null;
-  }
-
+if (!$con) {
+  die("Connection failed: " . mysqli_connect_error());
 }
 
+$user_id = $_SESSION['user_id'] ?? null;
+$fetch_user = null;
+
+if ($user_id) {
+  $select_user = mysqli_query($con, "SELECT * FROM `details` WHERE id='$user_id'");
+  if ($select_user && mysqli_num_rows($select_user) > 0) {
+    $fetch_user = mysqli_fetch_assoc($select_user);
+  }
+}
 ?>
 
 <head>
@@ -41,7 +40,7 @@ if ($user_id != null) {
 
 <body>
 
-  <header><BR>
+  <header><br>
     <div class="logo">
       <p><u>Guru Mobile Accessories</u> &amp; <u> Electronics</u></p>
     </div>
@@ -54,9 +53,7 @@ if ($user_id != null) {
               <?php
               $cartres = mysqli_query($con, "SELECT user_cart FROM `details` WHERE id = '$user_id'");
               $rowcount = mysqli_fetch_assoc($cartres);
-              if ($rowcount) {
-                echo $rowcount['user_cart'];
-              }
+              echo $rowcount ? $rowcount['user_cart'] : '0';
               ?>
             </span>
           </a>
@@ -64,7 +61,7 @@ if ($user_id != null) {
         <div class="profile-container">
           <img src="images/homepage_imgs/profile_img.png" alt="profile" id="profileimg">
           <div class="dropdown-menu" id="dropdownMenu">
-            <a href="myprofile.php"><?php echo $fetch_user['firstname'] ?></a>
+            <a href="myprofile.php"><?php echo htmlspecialchars($fetch_user['firstname']); ?></a>
             <hr>
             <a href="myprofile.php">My Profile</a>
             <a href="#">Orders</a>
@@ -80,55 +77,55 @@ if ($user_id != null) {
         <a href="loginform.html">Login</a>
       </div>
     <?php endif; ?>
-
   </header><br><br><br><br><br><br>
+
   <div class="start">
     <nav>
-      <a href="Homepage.php" target="_parent">Home</a>
-      <a href="appl.php" target="_self">Appliances</a>
-      <a href="about.php" target="_self">About</a>
-      <a href="#footer" target="_self">Contact us</a>
+      <a href="Homepage.php">Home</a>
+      <a href="appl.php"><mark>Appliances</mark></a>
+      <a href="about.php">About</a>
+      <a href="#footer">Contact us</a>
     </nav>
   </div>
 
-
   <main class="editDetails">
-
-    <!-- Edit Username -->
-    <form method="POST" action="update_user.php">
-      <div class="edit editName">
-        <div class="display">
-          <p>Username</p>
-          <input type="text" name="new_username" value="<?php echo $fetch_user['firstname']; ?>">
+    <?php if ($fetch_user): ?>
+      <!-- Edit Username -->
+      <form method="POST" action="update_user.php">
+        <div class="edit editName">
+          <div class="display">
+            <p>Username</p>
+            <input type="text" name="new_username" value="<?php echo htmlspecialchars($fetch_user['firstname']); ?>">
+          </div>
+          <button type="submit" name="edit_username" class="button">Edit</button>
         </div>
-        <button type="submit" name="edit_username" class="button">Edit</button>
-      </div>
-    </form>
+      </form>
 
-    <!-- Edit Email -->
-    <form method="POST" action="update_user.php">
-      <div class="edit editEmail">
-        <div class="display">
-          <p>E-mail</p>
-          <input type="email" name="new_email" value="<?php echo $fetch_user['email']; ?>">
+      <!-- Edit Email -->
+      <form method="POST" action="update_user.php">
+        <div class="edit editEmail">
+          <div class="display">
+            <p>E-mail</p>
+            <input type="email" name="new_email" value="<?php echo htmlspecialchars($fetch_user['email']); ?>">
+          </div>
+          <button type="submit" name="edit_email" class="button">Edit</button>
         </div>
-        <button type="submit" name="edit_email" class="button">Edit</button>
-      </div>
-    </form>
+      </form>
 
-    <!-- Edit Password -->
-    <form method="POST" action="update_user.php">
-      <div class="edit editPassword">
-        <div class="display">
-          <p>Password</p>
-          <input type="text" name="new_password" value="<?php echo $fetch_user['password']; ?>">
+      <!-- Edit Password -->
+      <form method="POST" action="update_user.php">
+        <div class="edit editPassword">
+          <div class="display">
+            <p>Password</p>
+            <input type="text" name="new_password" value="<?php echo htmlspecialchars($fetch_user['password']); ?>">
+          </div>
+          <button type="submit" name="edit_password" class="button">Edit</button>
         </div>
-        <button type="submit" name="edit_password" class="button">Edit</button>
-      </div>
-    </form>
-
+      </form>
+    <?php else: ?>
+      <p style="text-align:center;">You must be logged in to edit your details.</p>
+    <?php endif; ?>
   </main>
-
 
   <footer id="footer">
     <div class="footer-content">
@@ -137,11 +134,8 @@ if ($user_id != null) {
       </div>
       <div class="footer-column details">
         <p>Email: <a href="mailto:pharshitha2005@gmail.com">pharshitha2005@gmail.com</a></p>
-        <p>Phone:
-          <span class="number">+91 9182355044</span>
-        </p>
-        <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530
-            034</span></p>
+        <p>Phone: <span class="number">+91 9182355044</span></p>
+        <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530 034</span></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -149,8 +143,6 @@ if ($user_id != null) {
     </div>
   </footer>
 
-
   <script src="homepage_script.js"></script>
 </body>
-
 </html>

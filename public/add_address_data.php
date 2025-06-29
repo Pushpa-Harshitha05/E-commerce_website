@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 
 function redirect()
 {
@@ -14,39 +16,36 @@ $port = 32509;
 
 // Connect to the database
 $con = mysqli_connect($server, $username, $password, $db_name, $port);
-session_start();
+if (!$con) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  if (!$con) {
-    die("connection failed due to" . mysqli_connect_error());
-  }
-
-  $fullname = trim($_POST['fullname']);
-  $phone = trim($_POST['phone']);
-  $address = trim($_POST['address']);
-  $city = trim($_POST['city']);
-  $state = trim($_POST['state']);
+  $fullname = mysqli_real_escape_string($con, trim($_POST['fullname']));
+  $phone = mysqli_real_escape_string($con, trim($_POST['phone']));
+  $address = mysqli_real_escape_string($con, trim($_POST['address']));
+  $city = mysqli_real_escape_string($con, trim($_POST['city']));
+  $state = mysqli_real_escape_string($con, trim($_POST['state']));
 
   $checkaddress = mysqli_query($con, "SELECT * FROM `addresses` WHERE address_name = '$fullname' AND phone_no = '$phone' AND street = '$address' AND city = '$city' AND state = '$state'");
 
   if (mysqli_num_rows($checkaddress) > 0) {
-
     if (array_key_exists('type', $_POST)) {
-      $deleteaddr = mysqli_query($con, "DELETE FROM `addresses` WHERE address_name = '$fullname' AND phone_no = '$phone' AND street = '$address' AND city = '$city' AND state = '$state'");
+      mysqli_query($con, "DELETE FROM `addresses` WHERE address_name = '$fullname' AND phone_no = '$phone' AND street = '$address' AND city = '$city' AND state = '$state'");
     }
-
   } else {
-    $insertaddress = mysqli_query($con, "INSERT INTO `addresses` (user_id,address_name,phone_no,street,city,state) VALUES ('$user_id','$fullname','$phone','$address','$city','$state')");
+    $insertaddress_sql = "INSERT INTO `addresses` (user_id,address_name,phone_no,street,city,state) VALUES ('$user_id','$fullname','$phone','$address','$city','$state')";
+    $insertaddress = mysqli_query($con, $insertaddress_sql);
 
-    if ($con->query($insertaddress) == true) {
+    if ($insertaddress) {
       redirect();
     } else {
-      echo "ERROR: $sql <br> $con->error";
+      echo "ERROR: $insertaddress_sql <br> " . mysqli_error($con);
     }
   }
 }
-
 ?>
+<?php ob_end_flush(); ?>

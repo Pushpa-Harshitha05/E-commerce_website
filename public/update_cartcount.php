@@ -1,4 +1,6 @@
-<?php
+<?
+ob_start();
+session_start();
 
 $server = "shuttle.proxy.rlwy.net";
 $username = "root";
@@ -8,7 +10,6 @@ $port = 32509;
 
 // Connect to the database
 $con = mysqli_connect($server, $username, $password, $db_name, $port);
-session_start();
 
 if (!$con) {
   die("connection failed");

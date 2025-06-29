@@ -1,7 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="en">
-
 <?php
+ob_start(); // Prevent headers already sent issues
+session_start();
 
 $server = "shuttle.proxy.rlwy.net";
 $username = "root";
@@ -11,27 +10,21 @@ $port = 32509;
 
 // Connect to the database
 $con = mysqli_connect($server, $username, $password, $db_name, $port);
-session_start();
 
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+$user_id = $_SESSION['user_id'] ?? null;
 
-if (!$user_id) {
+$fetch_user = null;
 
-} else {
+if ($user_id) {
    $select_user = mysqli_query($con, "SELECT * FROM `details` WHERE id='$user_id'");
-
-   if (!$select_user) {
-      die("query failed");
-   }
-
-   if (mysqli_num_rows($select_user) > 0) {
+   if ($select_user && mysqli_num_rows($select_user) > 0) {
       $fetch_user = mysqli_fetch_assoc($select_user);
-   } else {
-      $fetch_user = null;
    }
 }
-
 ?>
+
+<!DOCTYPE HTML>
+<html lang="en">
 
 <head>
    <meta charset="UTF-8">
@@ -44,30 +37,29 @@ if (!$user_id) {
 </head>
 
 <body>
-   <header><BR>
+   <header><br>
       <div class="logo">
          <p><u>Guru Mobile Accessories</u> &amp; <u> Electronics</u></p>
       </div>
+
       <?php if ($user_id && $fetch_user): ?>
          <div class="profile">
             <div class="cartitems">
                <a href="shopping_cart.php" class="cartlink">
-                  <img src="images/homepage_imgs/cart.png" alt="cart" id="cart">
+                  <img src="images/homepage_imgs/cart.png" alt="Shopping Cart" id="cart">
                   <span id="cartcount">
                      <?php
                      $cartres = mysqli_query($con, "SELECT user_cart FROM `details` WHERE id = '$user_id'");
                      $rowcount = mysqli_fetch_assoc($cartres);
-                     if ($rowcount) {
-                        echo $rowcount['user_cart'];
-                     }
+                     echo $rowcount['user_cart'] ?? 0;
                      ?>
                   </span>
                </a>
             </div>
             <div class="profile-container">
-               <img src="images/homepage_imgs/profile_img.png" alt="profile" id="profileimg">
+               <img src="images/homepage_imgs/profile_img.png" alt="Profile Image" id="profileimg">
                <div class="dropdown-menu" id="dropdownMenu">
-                  <a href="myprofile.php"><?php echo $fetch_user['firstname'] ?></a>
+                  <a href="myprofile.php"><?= $fetch_user['firstname']; ?></a>
                   <hr>
                   <a href="myprofile.php">My Profile</a>
                   <a href="#">Orders</a>
@@ -83,8 +75,10 @@ if (!$user_id) {
             <a href="loginform.html">Login</a>
          </div>
       <?php endif; ?>
+   </header>
 
-   </header><br><br><br><br><br><br>
+   <br><br><br><br><br><br>
+
    <div class="start">
       <nav>
          <a href="Homepage.php" target="_parent">Home</a>
@@ -119,6 +113,7 @@ if (!$user_id) {
             </div>
          </a>
       </div>
+
       <div class="contain">
          <a id="speakers" href="speakers.php" target="_self">
             <div class="sub">
@@ -144,11 +139,8 @@ if (!$user_id) {
          </div>
          <div class="footer-column details">
             <p>Email: <a href="mailto:pharshitha2005@gmail.com">pharshitha2005@gmail.com</a></p>
-            <p>Phone:
-               <span class="number">+91 9182355044</span>
-            </p>
-            <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530
-                  034</span></p>
+            <p>Phone: <span class="number">+91 9182355044</span></p>
+            <p>Address: <span class="number">Appughar Road, OPP. SBI Bank, Sector-7, MVP Colony, Visakhapatnam - 530 034</span></p>
          </div>
       </div>
       <div class="footer-bottom">
