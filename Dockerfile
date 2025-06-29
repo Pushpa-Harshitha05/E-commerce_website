@@ -11,9 +11,9 @@ RUN a2enmod rewrite
 COPY public/ /var/www/html/
 
 # Allow .htaccess overrides
-RUN echo "<Directory /var/www/html/>
+RUN bash -c 'echo "<Directory /var/www/html/>
     AllowOverride All
-</Directory>" > /etc/apache2/conf-available/override.conf && \
+</Directory>" > /etc/apache2/conf-available/override.conf' && \
     a2enconf override
 
 # Expose port 80 (default)
