@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php
+session_start();
+
    $server = "shuttle.proxy.rlwy.net";
    $username = "root";
    $password = "aFIhWjQbLKBXyCVtSuVXsziRaqNrASHq";
@@ -10,7 +12,6 @@
 
    // Connect to the database
    $con = mysqli_connect($server, $username, $password, $db_name, $port);
-   session_start();
 
    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
