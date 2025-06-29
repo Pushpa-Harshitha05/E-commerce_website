@@ -1,6 +1,3 @@
-<!DOCTYPE HTML>
-<html lang="en">
-
 <?php
 ob_start();
 session_start();
@@ -33,6 +30,9 @@ if (!$user_id) {
 }
 
 ?>
+
+<!DOCTYPE HTML>
+<html lang="en">
 
 <head>
   <title>Electronic shopping site</title>

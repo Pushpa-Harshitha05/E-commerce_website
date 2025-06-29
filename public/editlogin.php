@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 ob_start(); // Ensures header() works later without error
 session_start();
@@ -27,6 +24,9 @@ if ($user_id) {
   }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>Edit Login Details</title>

@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 ob_start();
 session_start();
@@ -54,6 +51,9 @@ if (isset($_POST['addtocartbtn'])) {
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>MOUSE ELECTRONIC APPLIANCES</title>
